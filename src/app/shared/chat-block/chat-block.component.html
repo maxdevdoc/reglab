@@ -1,0 +1,49 @@
+<div class="flex flex-col h-[80vh] bg-gray-100">
+  <div class="flex-grow p-4 overflow-y-auto">
+    <div class="flex flex-col space-y-4">
+      @for (message of filteredMessages(); track message.id) {
+        <div
+          class="flex flex-col"
+          [ngClass]="{
+            'items-end': message.from_user === currentUser().id,
+            'items-start': message.from_user !== currentUser().id,
+          }"
+        >
+          @if (message.from_user !== currentUser().id) {
+            <span class="text-xs text-gray-500 mb-1">
+              {{ getUserNameById(message.from_user) }}
+            </span>
+          }
+          <div
+            [ngClass]="{
+              'bg-blue-500 text-white': message.from_user === currentUser().id,
+              'bg-gray-200 text-gray-900':
+                message.from_user !== currentUser().id,
+            }"
+            class="rounded-lg p-3 max-w-xs"
+          >
+            {{ message.content }}
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+
+  <div class="bg-white p-4 border-t border-gray-300">
+    <div class="flex">
+      <textarea
+        [(ngModel)]="textNewMessage"
+        placeholder="Введите сообщение..."
+        class="flex-grow p-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent resize-none"
+        rows="1"
+      >
+      </textarea>
+      <button
+        class="ml-2 bg-blue-500 text-white rounded-lg p-2 hover:bg-blue-600 transition duration-300"
+        (click)="sendMessage()"
+      >
+        Отправить
+      </button>
+    </div>
+  </div>
+</div>

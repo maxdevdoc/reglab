@@ -1,0 +1,125 @@
+{
+  "users": [
+    {
+      "id": "1",
+      "userName": "User1",
+      "password": "123",
+      "is_online": false
+    },
+    {
+      "id": "2",
+      "userName": "User2",
+      "password": "123",
+      "is_online": false
+    },
+    {
+      "id": "793",
+      "userName": "User3",
+      "password": "123",
+      "is_online": false
+    },
+    {
+      "id": "69",
+      "userName": "User4",
+      "password": "123",
+      "is_online": false
+    },
+    {
+      "id": "688",
+      "userName": "User6",
+      "password": "123",
+      "is_online": true
+    },
+    {
+      "id": "816",
+      "userName": "User7",
+      "password": "123",
+      "is_online": false
+    },
+    {
+      "id": "616",
+      "userName": "User8",
+      "password": "123",
+      "is_online": false
+    }
+  ],
+  "channels": [
+    {
+      "id": "434",
+      "name": "#channel 1"
+    },
+    {
+      "id": "56",
+      "name": "#channel 2"
+    },
+    {
+      "id": "88",
+      "name": "# channel 3"
+    },
+    {
+      "id": 297,
+      "name": "# channel 4"
+    }
+  ],
+  "user_channels": [
+    {
+      "id": "1",
+      "channelId": 56
+    },
+    {
+      "id": "837",
+      "channelId": 56
+    },
+    {
+      "id": "1",
+      "channelId": 434
+    },
+    {
+      "id": "2",
+      "channelId": 434
+    }
+  ],
+  "messages": [
+    {
+      "id": "1",
+      "from_user": 1,
+      "channel_id": 1,
+      "content": "Hello. This is user number one"
+    },
+    {
+      "id": "2",
+      "from_user": 2,
+      "channel_id": 1,
+      "content": "Hello. This is user number two"
+    },
+    {
+      "id": "1",
+      "from_user": "837",
+      "channel_id": 434
+    },
+    {
+      "id": "2",
+      "from_user": "837",
+      "channel_id": 434,
+      "content": ""
+    },
+    {
+      "id": "3",
+      "from_user": "837",
+      "channel_id": 434,
+      "content": ""
+    },
+    {
+      "id": "4",
+      "from_user": "837",
+      "channel_id": 434,
+      "content": ""
+    },
+    {
+      "id": 5,
+      "from_user": "616",
+      "channel_id": 434,
+      "content": "test messsage"
+    }
+  ]
+}

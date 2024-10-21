@@ -1,0 +1,80 @@
+<div class="bg-white shadow-2xl rounded-lg p-3 max-w-xs ml-5 mt-6">
+  <h4 class="text-lg font-semibold mb-3 text-gray-800">CHANNELS</h4>
+
+  <div class="highlighted-lines">
+    <ul class="space-y-1">
+      @for (channel of allChannels$ | async; track channel.id) {
+        <li
+          [ngClass]="{
+            'bg-blue-600 shadow-lg text-white': isChannelSelected(channel.id),
+            'bg-surface-secondary text-gray-800': !isChannelSelected(
+              channel.id
+            ),
+          }"
+          class="transition-transform duration-300 ease-in-out transform hover:scale-105 hover:bg-opacity-80 cursor-pointer p-2 rounded-md"
+          (click)="changeChannel(channel)"
+        >
+          <span class="font-semibold">{{ channel.name }}</span>
+        </li>
+      }
+    </ul>
+  </div>
+
+  <button
+    (click)="openModal()"
+    class="mt-4 w-full bg-blue-500 text-white py-2 px-4 rounded-md font-semibold hover:bg-blue-600 transition duration-200"
+  >
+    Add channels
+  </button>
+
+  @if (isModalOpen) {
+    <div
+      class="fixed z-10 inset-0 overflow-y-auto bg-gray-900 bg-opacity-50 transition-opacity duration-300 ease-in-out"
+      [ngClass]="{ 'modal-fade-out': isClosing, 'modal-fade-in': !isClosing }"
+    >
+      <div class="flex items-center justify-center min-h-screen px-4">
+        <div
+          class="bg-white rounded-lg shadow-xl max-w-lg w-full p-6 transform transition-all duration-300 ease-in-out"
+          [ngClass]="{
+            'modal-content-fade-out': isClosing,
+            'modal-content-fade-in': !isClosing,
+          }"
+        >
+          <h3 class="text-lg font-semibold mb-4">Create New Channel</h3>
+
+          <form (ngSubmit)="addChannel()">
+            <label
+              for="channelName"
+              class="block text-sm font-medium text-gray-700"
+              >Channel Name</label
+            >
+            <input
+              [(ngModel)]="newChannelName"
+              name="channelName"
+              id="channelName"
+              required
+              class="mt-1 block w-full shadow-sm sm:text-sm border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
+              placeholder="Enter channel name"
+            />
+
+            <div class="mt-5 flex justify-end">
+              <button
+                type="button"
+                (click)="closeModal()"
+                class="mr-3 bg-gray-300 text-gray-700 px-4 py-2 rounded-md hover:bg-gray-400 transition duration-200"
+              >
+                Cancel
+              </button>
+              <button
+                type="submit"
+                class="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 transition duration-200"
+              >
+                Create
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  }
+</div>
